@@ -1,16 +1,19 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
+    "copy:public": "mkdir .next/standalone/public && cp -r public/* .next/standalone/public",
+    "copy:static": "mkdir .next/standalone/.next/static && cp -r .next/static/* .next/standalone/.next/static",
+    "copy:env": "cp .env.local .next/standalone/.env.local",
     "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build && npm run copy:public && npm run copy:static && npm run copy:env",
+    "start": "node .next/standalone/server.js"
   },
   "dependencies": {
-    "@neshca/cache-handler": "^1.3.2",
-    "next": "latest",
+    "ioredis": "^5.6.1",
+    "next": "^15.1.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "redis": "latest"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",
