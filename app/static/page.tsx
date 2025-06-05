@@ -1,4 +1,4 @@
-import RevalidatePathButton from "../components/revalidatePathButton";
+import RevalidatePathButton from "../../utils/components/revalidatePathButton";
 
 export default function StaticPage() {
     const time = +Date.now();

@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   cacheHandler:
       process.env.NODE_ENV === "production"
-          ? "./cache/cache-handler.js"
+          ? "./utils/cache/cache-handler.js"
           : undefined,
   cacheMaxMemorySize: 0, // disable default in-memory caching
 };
