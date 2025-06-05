@@ -2,26 +2,34 @@
 
 ## Getting Started
 
-First time
+### First time only
 
 ```bash
 npm i
+```
+
+### Run dev server
+```bash
 npm run dev
 ```
 
-Run a production build
+### Run a production build
 
 ```bash
 npm build
 npm run start
 ```
 
-## Docker
+## Load Balancing (Docker + Redis + Nginx)
 
-Run in docker
+### Run in docker with load balancer
 
 ```bash
 docker compose up --build
+```
+
+```bash
+localhost:3380
 ```
 
 ### Feature branches
