@@ -14,7 +14,7 @@ export function delCache(key) {
 }
 
 export function getAllKeys(pattern = '*') {
-    const allKeys = lru.keys();
+    let allKeys = [...lru.keys()];
     if (pattern === '*') return allKeys;
 
     const regex = new RegExp('^' + pattern.replace(/\*/g, '.*') + '$');
