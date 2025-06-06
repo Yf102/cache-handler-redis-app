@@ -1,7 +1,7 @@
 
 "use client"
 
-import { revalidateByPath } from "../actions/revalidateByPathAction";
+import { revalidateByPath } from "../actions/revalidate";
 
 interface IProps {
     path: string;

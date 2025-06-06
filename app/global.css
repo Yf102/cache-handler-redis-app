@@ -54,6 +54,18 @@ html {
   transition: background-color 0.3s ease;
 }
 
+.revalidate {
+  background-color: #0099ff;
+}
+
+.fetch {
+  background-color: #4caf50;
+}
+
+.revalidate-page {
+  background-color: #f44336;
+}
+
 .revalidate-from-button:hover {
   background-color: #005f73;
 }

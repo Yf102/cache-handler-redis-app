@@ -1,5 +1,5 @@
 import { getCacheHandler } from './get-cache-handler.js';
-import { getRawKey } from "./config.js";
+import {getRawKey, PREFIX} from "./config.js";
 
 export default class CacheHandler {
     constructor(options) {
@@ -7,11 +7,13 @@ export default class CacheHandler {
     }
 
     async get(key) {
+        console.log(`getting key: ${key}`)
         return getCacheHandler().getCache(key);
     }
 
     async set(key, data, ctx) {
-        const tags =  ctx?.tags ?? [`_N_T_${key}`]
+        const tags =  ctx?.tags ?? [`${key}`]
+        console.log(`Setting tags:`, tags)
         const payload = {
             value: data,
             lastModified: Date.now(),
@@ -22,7 +24,10 @@ export default class CacheHandler {
 
     async revalidateTag(tags) {
         // tags is either a string or an array of strings
-        tags = [tags].flat();
+        tags = [tags]
+            .flat()
+            .map(s => s.replace(/^_N_T_/, ''));
+
         const handler = getCacheHandler();
         const keys = await handler.getAllKeys();
 
@@ -31,6 +36,7 @@ export default class CacheHandler {
             const value = await handler.getCache(rawKey);
 
             if (value?.tags?.some((tag) => tags.includes(tag))) {
+                console.log(`Revalidating tags: ${rawKey}`)
                 await handler.delCache(rawKey);
             }
         }

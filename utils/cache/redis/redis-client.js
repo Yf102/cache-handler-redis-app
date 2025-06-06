@@ -23,7 +23,7 @@ redis.on('ready', () => {
 
 redis.on('error', (err) => {
     connected = false;
-    console.log('[Redis Error]')
+    // console.log('[Redis Error]')
 });
 
 redis.on('end', () => {
