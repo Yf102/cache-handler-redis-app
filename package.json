@@ -7,7 +7,9 @@
     "copy:env": "cp .env.local .next/standalone/.env.local",
     "dev": "next",
     "build": "next build && npm run copy:public && npm run copy:static && npm run copy:env",
-    "start": "node .next/standalone/server.js"
+    "start": "node .next/standalone/server.js",
+    "prettier": "npx prettier **/*.ts **/*.tsx --check .",
+    "prettier:fix": "npm run prettier -- --write"
   },
   "dependencies": {
     "ioredis": "^5.6.1",
@@ -20,6 +22,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "^5.3.3"
   }
 }

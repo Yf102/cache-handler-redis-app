@@ -1,45 +1,45 @@
-"use client";
+'use client'
 
-import { revalidateByTag } from "../../../utils/actions/revalidate";
-import { Dispatch, SetStateAction } from "react";
-import { TimeData } from "./TimeZoneClient";
-import { RevalidateButton } from "../../components/revalidate-btn";
+import { Dispatch, SetStateAction } from 'react'
+import { revalidateByTag } from '../../../utils/actions/revalidate'
+import { RevalidateButton } from '../../components/revalidate-btn'
+import { TimeData } from './TimeZoneClient'
 
 type Props = {
-    timezone: string
-    setTimeData: Dispatch<SetStateAction<TimeData>>
+  timezone: string
+  setTimeData: Dispatch<SetStateAction<TimeData>>
 }
 
 const TimeZoneForm = ({ timezone, setTimeData }: Props) => {
-    const tagname = `time-data:/${timezone}`
+  const tagname = `time-data:/${timezone}`
 
-    const handeRevalidateTag = async () => {
-        revalidateByTag(tagname)
+  const handeRevalidateTag = async () => {
+    revalidateByTag(tagname)
+  }
+
+  const handleFetch = async () => {
+    const res = await fetch(`/api/time?timezone=${timezone}&tagname=${tagname}`)
+
+    if (!res.ok) {
+      return null
     }
 
-    const handleFetch = async () => {
-        const res = await fetch(`/api/time?timezone=${timezone}&tagname=${tagname}`);
+    const data = (await res.json()) as TimeData
 
-        if (!res.ok) {
-            return null
-        }
+    setTimeData(data)
+  }
 
-        const data = await res.json() as TimeData;
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+      <form className='revalidate-from-tag' action={handeRevalidateTag}>
+        <RevalidateButton type='revalidate' btnMsg='Revalidate TAG' />
+      </form>
 
-        setTimeData(data)
-    }
-
-    return (
-        <div style={{display: 'flex', justifyContent: 'center', gap: '10px'}}>
-            <form className="revalidate-from-tag" action={handeRevalidateTag}>
-                <RevalidateButton type='revalidate' btnMsg='Revalidate TAG'/>
-            </form>
-
-            <form className="revalidate-from-tag" action={handleFetch}>
-                <RevalidateButton type='fetch' btnMsg='Fetch time'/>
-            </form>
-        </div>
-    );
+      <form className='revalidate-from-tag' action={handleFetch}>
+        <RevalidateButton type='fetch' btnMsg='Fetch time' />
+      </form>
+    </div>
+  )
 }
 
 export { TimeZoneForm }

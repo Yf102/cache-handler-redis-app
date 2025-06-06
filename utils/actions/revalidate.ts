@@ -1,16 +1,13 @@
-"use server";
+'use server'
 
 import { revalidatePath, revalidateTag } from 'next/cache'
-import { TimeData } from '../../app/[timezone]/components/TimeZoneClient';
-
-
 
 const revalidateByTag = async (tag: string) => {
-    revalidateTag(tag)
+  revalidateTag(tag)
 }
 
 const revalidateByPath = async (path: string) => {
-    revalidatePath(path)
+  revalidatePath(path)
 }
 
-export { revalidateByTag, revalidateByPath }
+export { revalidateByPath, revalidateByTag }
