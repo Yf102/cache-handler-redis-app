@@ -1,7 +1,8 @@
-import { CacheStateWatcher } from "./components/cache-state-watcher";
+import { TimeZoneClient } from "./components/TimeZoneClient";
 import { Suspense } from "react";
 import Link from "next/link";
 import RevalidatePage from "../components/revalidate-page";
+import RedisLink from "../components/redis-link";
 
 const timeZones = ["cet", "eet"];
 
@@ -23,9 +24,10 @@ export default async function Page({ params }) {
                     </Link>
                 ))}
             </header>
+
             <main className="widget">
                 <Suspense fallback={null}>
-                    <CacheStateWatcher timezone={timezone}/>
+                    <TimeZoneClient timezone={timezone}/>
                 </Suspense>
             </main>
 
@@ -34,16 +36,7 @@ export default async function Page({ params }) {
             </div>
             <RevalidatePage />
 
-            <footer className="footer">
-                <Link
-                    href='http://localhost:8001/redis-stack/browser'
-                    className="link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    View RedisInsight &#x21AA;
-                </Link>
-            </footer>
+            <RedisLink />
         </>
     );
 }

@@ -1,8 +1,7 @@
 import React, {Suspense} from 'react';
-import {CacheStateWatcher} from "../[timezone]/components/cache-state-watcher";
 import RevalidatePage from "../components/revalidate-page";
-import Link from "next/link";
-import JokeClient from "./JokeClient";
+import JokeClient from "./components/JokeClient";
+import RedisLink from "../components/redis-link";
 
 const Page = () => {
     return (
@@ -22,16 +21,7 @@ const Page = () => {
             </div>
             <RevalidatePage/>
 
-            <footer className="footer">
-                <Link
-                    href='http://localhost:8001/redis-stack/browser'
-                    className="link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    View RedisInsight &#x21AA;
-                </Link>
-            </footer>
+            <RedisLink />
         </>
     );
 };

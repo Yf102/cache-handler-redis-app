@@ -1,4 +1,4 @@
-import { TimeData } from "../../[timezone]/components/cache-state-watcher";
+import { TimeData } from "../../[timezone]/components/TimeZoneClient";
 import { NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {

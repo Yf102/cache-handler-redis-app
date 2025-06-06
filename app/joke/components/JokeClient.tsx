@@ -1,7 +1,7 @@
 'use client'
 import React, {useState} from 'react';
-import {JokeType} from "../api/joke/route";
-import {JokeForm} from "./components/JokeForm";
+import {JokeType} from "../../api/joke/route";
+import {JokeForm} from "./JokeForm";
 
 const JokeClient = () => {
     const [joke, setJoke] = useState<undefined | JokeType>()

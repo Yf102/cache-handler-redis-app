@@ -1,14 +1,14 @@
 "use client";
 
 import {ReactNode, useEffect, useState} from "react";
-import { RevalidateTagFrom } from "./revalidate-form";
+import { TimeZoneForm } from "./TimeZoneForm";
 
 export type TimeData = {
     timeZone: string;
     dateTime	: string
 };
 
-const CacheStateWatcher = ({ timezone }: {timezone: string}): ReactNode => {
+const TimeZoneClient = ({ timezone }: {timezone: string}): ReactNode => {
     const [timeData, setTimeData] = useState<undefined | TimeData>()
 
     return (
@@ -20,9 +20,9 @@ const CacheStateWatcher = ({ timezone }: {timezone: string}): ReactNode => {
 
             </div>
 
-            <RevalidateTagFrom timezone={timezone} setTimeData={setTimeData}/>
+            <TimeZoneForm timezone={timezone} setTimeData={setTimeData}/>
         </>
     );
 }
 
-export {CacheStateWatcher}
+export { TimeZoneClient }

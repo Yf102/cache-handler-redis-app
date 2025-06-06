@@ -2,7 +2,7 @@
 
 import { revalidateByTag } from "../../../utils/actions/revalidate";
 import { Dispatch, SetStateAction } from "react";
-import { TimeData } from "./cache-state-watcher";
+import { TimeData } from "./TimeZoneClient";
 import { RevalidateButton } from "../../components/revalidate-btn";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
     setTimeData: Dispatch<SetStateAction<TimeData>>
 }
 
-const RevalidateTagFrom = ({ timezone, setTimeData }: Props) => {
+const TimeZoneForm = ({ timezone, setTimeData }: Props) => {
     const tagname = `time-data:/${timezone}`
 
     const handeRevalidateTag = async () => {
@@ -42,4 +42,4 @@ const RevalidateTagFrom = ({ timezone, setTimeData }: Props) => {
     );
 }
 
-export {RevalidateTagFrom}
+export { TimeZoneForm }
