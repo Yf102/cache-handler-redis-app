@@ -1,4 +1,3 @@
-import { TimeData } from "../../[timezone]/components/cache-state-watcher";
 import { NextRequest } from 'next/server'
 
 export type JokeType = {
@@ -10,11 +9,10 @@ export type JokeType = {
 
 export async function GET(request: NextRequest) {
     const  searchParams  = request.nextUrl.searchParams
-    const timezone = searchParams.get('timezone');
     const tagname = searchParams.get('tagname');
 
     const res = await fetch(`https://official-joke-api.appspot.com/random_joke`,{
-        next: { tags: [`joke-${tagname}`], revalidate: 60 },
+        next: { tags: [`${tagname}`], revalidate: 60 },
     });
 
     if (!res.ok) {

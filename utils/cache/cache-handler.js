@@ -13,7 +13,7 @@ export default class CacheHandler {
 
     async set(key, data, ctx) {
         const tags =  ctx?.tags ?? [`${key}`]
-        console.log(`Setting tags: ${tags}`)
+        console.log(`Setting tags:`, tags)
         const payload = {
             value: data,
             lastModified: Date.now(),
@@ -31,7 +31,6 @@ export default class CacheHandler {
         const handler = getCacheHandler();
         const keys = await handler.getAllKeys();
 
-        console.log({lruTags: keys, nextTags: tags})
         for (const key of keys) {
             const rawKey = getRawKey(key);
             const value = await handler.getCache(rawKey);
