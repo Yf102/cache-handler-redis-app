@@ -29,7 +29,7 @@ docker compose up --build
 ```
 
 ```bash
-localhost:3380
+http://localhost:3380/static
 ```
 
 ### Feature branches
