@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import {CacheStateWatcher} from "../[timezone]/components/cache-state-watcher";
-import RevalidatePage from "../[timezone]/components/revalidate-page";
+import RevalidatePage from "../components/revalidate-page";
 import Link from "next/link";
 import JokeClient from "./JokeClient";
 

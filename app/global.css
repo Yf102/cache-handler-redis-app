@@ -66,6 +66,13 @@ html {
   background-color: #f44336;
 }
 
+.disabled {
+  background-color: #cccccc;
+}
+.disabled:hover {
+  background-color: #cccccc;
+}
+
 .revalidate-from-button:hover {
   background-color: #005f73;
 }

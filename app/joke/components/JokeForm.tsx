@@ -4,21 +4,7 @@ import { useFormStatus } from "react-dom";
 import { revalidateByTag } from "../../../utils/actions/revalidate";
 import { Dispatch, SetStateAction } from "react";
 import {JokeType} from "../../api/joke/route";
-
-function RevalidateButton({ btnMsg, type }: { btnMsg: string; type: 'fetch' | 'revalidate' }) {
-    const formStatus = useFormStatus();
-
-    return (
-        <button
-            className={`revalidate-from-button ${type}`}
-            type="submit"
-            disabled={formStatus.pending}
-            aria-disabled={formStatus.pending}
-        >
-            {btnMsg}
-        </button>
-    );
-}
+import { RevalidateButton } from "../../components/revalidate-btn";
 
 type Props = {
     setJoke: Dispatch<SetStateAction<JokeType>>

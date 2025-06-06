@@ -1,7 +1,7 @@
 import { CacheStateWatcher } from "./components/cache-state-watcher";
 import { Suspense } from "react";
 import Link from "next/link";
-import RevalidatePage from "./components/revalidate-page";
+import RevalidatePage from "../components/revalidate-page";
 
 const timeZones = ["cet", "eet"];
 
